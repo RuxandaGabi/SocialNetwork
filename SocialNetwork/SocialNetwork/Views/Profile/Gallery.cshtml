@@ -1,0 +1,50 @@
+﻿@{
+                /**/
+
+                ViewBag.Title = "Gallery";
+}
+
+<h2>Gallery</h2>
+@model IEnumerable<SocialNetwork.Models.Post>
+
+@foreach (var item in Model)
+{
+
+    <div class="card-post">
+        <div>
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Likes)
+                </dt>
+
+                <dd>
+                    @item.Likes
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Comments)
+                </dt>
+
+                <dd>
+                    @item.Comments
+                </dd>
+
+                <dt>
+                    <b>Description</b>
+                </dt>
+
+                <dd>
+                    @item.Description
+                </dd>
+
+
+                <dd>
+                    <img src="@Url.Content(item.ImagePath)" new class="img-post" />
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+
+}
