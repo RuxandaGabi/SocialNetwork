@@ -77,6 +77,13 @@ namespace SocialNetwork.Controllers
             return View(db.Posts.Where(d => d.UserID == id).ToList().OrderByDescending(c => c.DatePosted));
         }
 
+        public ActionResult Test()
+        {
+            //var asd = Temp;
+            ViewBag.Test = "Ana are prune";
+           // Session["1"] = sTest.ToString();
+            return View();
+        }
 
     }
 }

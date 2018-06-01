@@ -102,7 +102,7 @@
         <ul class="nav nav-tabs" role="tablist">
             <li class="active">@Html.ActionLink("Last Posts", "LastPosts", "Profile", null, new { id = Session["iduser"] })</li>
             <li>@Html.ActionLink("Info", "Bio", "Profile", null, new { id = Session["iduser"] })</li>
-            <li><a href="#pictures" role="tab" id="chatTab" data-toggle="tab" aria-controls="picture" aria-expanded="true">Pictures</a></li>
+            <li>@Html.ActionLink("Pictures", "Gallery", "Profile", null, new { id = Session["iduser"] })</li>
             <li><a href="#uploads" role="tab" id="chatTab" data-toggle="tab" aria-controls="uploads" aria-expanded="true">Uploads</a></li>
 
         </ul>
@@ -117,91 +117,6 @@
                 </div>
             </div>
         </div>
-
-
-        @*<div class="tab-pane fade" role="tabpanel" id="profile" aria-labelledby="profileTab">
-            <div class="container-fluid container-posts">
-                <div class="card-post">
-                    <ul class="profile-data">
-                        <li><b>First Name:</b>@Html.DisplayFor(model => model.FirstName)</li>
-                        <li><b>Last Name:</b>@Html.DisplayFor(model => model.LastName)</li>
-                        <li><b>Date of Birth:</b>@Html.DisplayFor(model => model.DateOfBirth)</li>
-                        <li><b>Email:</b>@Html.DisplayFor(model => model.EmailID)</li>
-                        <li><b>Hobbies:</b>Statul ... degeaba</li>
-                        <li><b>Studies:</b>Scoala vietii care o face toti bajetii</li>
-                        <li><b>Job:</b> Taliban cu acte in regula</li>
-                        <li><b>Description:</b>Bla bla bla...</li>
-                    </ul>
-                </div>
-            </div>
-        </div>*@<!-- end tab Profile -->
-
-
-
-
-
-
-
-
-        @*<div id="posts-container" class="container-fluid container-posts">
-
-            <h2>Profile</h2>
-
-            <div>
-                <h4>User</h4>
-                <hr />
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.FirstName)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.FirstName)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.LastName)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.LastName)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.EmailID)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.EmailID)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.DateOfBirth)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.DateOfBirth)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Password)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Password)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ProfileImage)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.ProfileImage)
-                    </dd>
-
-                </dl>
-            </div>
-        </div>*@
 
 
     </div>

@@ -1,3 +1,4 @@
+C:\Licenta\SocialNetwork\SocialNetwork\bin\EntityFramework.xml
 C:\Licenta\SocialNetwork\SocialNetwork\bin\SocialNetwork.dll.config
 C:\Licenta\SocialNetwork\SocialNetwork\bin\SocialNetwork.dll
 C:\Licenta\SocialNetwork\SocialNetwork\bin\SocialNetwork.pdb
@@ -11,7 +12,6 @@ C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Razor.dll
 C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Webpages.Deployment.dll
 C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Webpages.dll
 C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Webpages.Razor.dll
-C:\Licenta\SocialNetwork\SocialNetwork\bin\EntityFramework.xml
 C:\Licenta\SocialNetwork\SocialNetwork\bin\EntityFramework.SqlServer.xml
 C:\Licenta\SocialNetwork\SocialNetwork\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Razor.xml
@@ -20,7 +20,8 @@ C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Webpages.Deployment.xml
 C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Webpages.Razor.xml
 C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Helpers.xml
 C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Mvc.xml
+C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csprojAssemblyReference.cache
 C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csproj.CoreCompileInputs.cache
+C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csproj.CopyComplete
 C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.dll
 C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.pdb
-C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csprojResolveAssemblyReference.cache

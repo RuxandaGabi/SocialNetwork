@@ -1,50 +1,157 @@
 ﻿@{
-                /**/
+    /**/
 
-                ViewBag.Title = "Gallery";
+    ViewBag.Title = "Gallery";
 }
 
+@model SocialNetwork.Models.User
+
+
 <h2>Gallery</h2>
-@model IEnumerable<SocialNetwork.Models.Post>
 
-@foreach (var item in Model)
-{
-
-    <div class="card-post">
-        <div>
-            <dl class="dl-horizontal">
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Likes)
-                </dt>
-
-                <dd>
-                    @item.Likes
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Comments)
-                </dt>
-
-                <dd>
-                    @item.Comments
-                </dd>
-
-                <dt>
-                    <b>Description</b>
-                </dt>
-
-                <dd>
-                    @item.Description
-                </dd>
+<link rel="stylesheet" href="~/Content/thumbnail-gallery.css">
 
 
-                <dd>
-                    <img src="@Url.Content(item.ImagePath)" new class="img-post" />
-                </dd>
 
-            </dl>
+<body id="personal">
+
+    <header class="text-right">
+        <form class="text-left search" method="GET">
+            <input name="q" type="text" placeholder="Search..">
+        </form>
+        <div class="menu-icon">
+            <div class="dropdown">
+                <span class="dropdown-toggle" role="button" id="dropdownSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span class="hidden-xs hidden-sm">Settings</span> <i class="fa fa-cogs" aria-hidden="true"></i>
+                </span>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownSettings">
+                    <li>
+                        <a href="settings.html" title="Settings" data-toggle="modal" data-target="#settingsmodal">
+                            <div class="col-xs-4">
+                                <i class="fa fa-wrench" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-xs-8 text-left">
+                                <span>Settings</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Settings">
+                            <div class="col-xs-4">
+                                <i class="fa fa-question" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-xs-8 text-left">
+                                <span>FAQ</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Settings">
+                            <div class="col-xs-4">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-xs-8 text-left">
+                                <span>Logout</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="second-icon dropdown menu-icon">
+            <span class="dropdown-toggle" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="hidden-xs hidden-sm">Notifications</span><i class="fa fa-bell-o" aria-hidden="true"></i> @*<span class="badge">2</span>*@
+            </span>
+            @*<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownNotification">
+                    <li class="new-not">
+                        <a href="#" title="User name comment"><img src="img/user2.jpg" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+                    </li>
+                    <li class="new-not">
+                        <a href="#" title="User name comment"><img src="img/user3.jpg" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+                    </li>
+                    <li>
+                        <a href="#" title="User name comment"><img src="img/user4.jpg" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#" title="All notifications">All Notifications</a></li>
+                </ul>*@
+        </div>
+        <div class="second-icon menu-icon">
+            <span>
+                <a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["id"]) })" title="Profile"> <span class="hidden-xs hidden-sm">Profile</span> <i class="fa fa-user" aria-hidden="true"></i></a>
+            </span>
+        </div>
+        <div class="second-icon menu-icon">
+            <span>
+                <a href="@Url.Action("Index", "Home")" title="Wall"> <span class="hidden-xs hidden-sm">Wall</span> <i class="fa fa-database" aria-hidden="true"></i></a>
+            </span>
+        </div>
+    </header>
+
+    @{
+        var data = ViewBag.Name;
+    }
+
+
+    <div class="sidebar-nav">
+
+        <a href="personal-profile.html" title="Profile">
+            <img src="~/Content/img/user.jpg" alt="User name" class="img-circle img-user">
+        </a>
+        <h2 class="text-center hidden-xs"><a href="personal-profile.html" title="Profile">@Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</a></h2>
+        <p class="text-center user-description hidden-xs">
+            <i>
+                UserID no. @Html.DisplayFor(model => model.UserID).
+                <br />
+            </i>
+        </p>
+    </div>
+
+    <div class="content-posts profile-content">
+        <div class="banner-profile">
+            @{Session["iduser"] = Model.UserID;}
+        </div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li>
+                @Html.ActionLink("LastPosts", "LastPosts", "Profile", null, new { id = Session["iduser"] })
+            </li>
+            <li>@Html.ActionLink("Info", "Bio", "Profile", null, new { id = Session["iduser"] })</li>
+            <li class="active">@Html.ActionLink("Pictures", "Gallery", "Profile", null, new { id = Session["iduser"] })</li>
+            <li><a href="#uploads" role="tab" id="chatTab" data-toggle="tab" aria-controls="chat" aria-expanded="true">Uploads</a></li>
+        </ul>
+        <div class="tab-content">
+            <!-- Tab Posts -->
+            <div class="tab-pane fade active in" role="tabpanel" id="posts" aria-labelledby="postsTab">
+                <div id="posts-container" class="container-fluid container-posts">
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container gallery-container">
+            <div class="tz-gallery">
+                <div class="row">
+
+                    @Html.Action("_Gallery", "Profile")
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <div id="settingsmodal" class="modal fade text-center">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
         </div>
     </div>
 
-}
+
+</body>

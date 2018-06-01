@@ -1,0 +1,16 @@
+﻿
+@model IEnumerable<SocialNetwork.Models.Post>
+
+
+@foreach (var item in Model)
+{
+
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <a class="lightbox" href="@Url.Content(item.ImagePath)">
+                <img src="@Url.Content(item.ImagePath)" new class="img-post" />
+            </a>
+        </div>
+    </div>
+
+}

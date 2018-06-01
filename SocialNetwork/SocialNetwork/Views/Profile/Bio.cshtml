@@ -82,9 +82,6 @@
 
 
     <div class="sidebar-nav">
-        @*@{
-        var data = ViewBag.Name;
-        }*@
 
         <a href="personal-profile.html" title="Profile">
             <img src="~/Content/img/user.jpg" alt="User name" class="img-circle img-user">
@@ -108,7 +105,7 @@
                 @Html.ActionLink("LastPosts", "LastPosts", "Profile", null, new { id = Session["iduser"] })
             </li>
             <li class="active">@Html.ActionLink("Info", "Bio", "Profile", null, new { id = Session["iduser"] })</li>
-            <li><a href="#pictures" role="tab" id="chatTab" data-toggle="tab" aria-controls="chat" aria-expanded="true">Pictures</a></li>
+            <li>@Html.ActionLink("Pictures", "Gallery", "Profile", null, new { id = Session["iduser"] })</li>
             <li><a href="#uploads" role="tab" id="chatTab" data-toggle="tab" aria-controls="chat" aria-expanded="true">Uploads</a></li>
         </ul>
         <div class="tab-content">

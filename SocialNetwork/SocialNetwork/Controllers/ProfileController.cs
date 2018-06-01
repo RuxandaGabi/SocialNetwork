@@ -39,9 +39,19 @@ namespace SocialNetwork.Controllers
         [HttpGet]
         public ActionResult Gallery(int id)
         {
-   
-            //id = Convert.ToInt32(Session["iduser"]);
+            User user = new User();
 
+            using (MyDatabaseEntities db = new MyDatabaseEntities())
+            {
+                user = db.Users.Where(x => x.UserID == id).FirstOrDefault();
+            }
+
+            return View(user);
+        }
+
+        public ActionResult _Gallery(int id)
+        {
+            id = Convert.ToInt32(Session["iduser"]);
             using (MyDatabaseEntities db = new MyDatabaseEntities())
             {
                 return View(db.Posts.Where(x => x.UserID == id && x.ImagePath != null).ToList().OrderByDescending(c => c.DatePosted));
