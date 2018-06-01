@@ -21,5 +21,6 @@ namespace SocialNetwork.Models
         public string Description { get; set; }
         public Nullable<System.DateTime> DatePosted { get; set; }
         public string ImagePath { get; set; }
+        public string UserIdName { get; set; }
     }
 }

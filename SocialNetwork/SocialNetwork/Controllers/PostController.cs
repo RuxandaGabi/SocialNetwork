@@ -23,6 +23,7 @@ namespace SocialNetwork.Controllers
         {
             post.UserID = Convert.ToInt32(Session["id"]);
             post.DatePosted = DateTime.Now;
+            
 
             if(Request.Files.Count > 0)
             {
@@ -40,6 +41,10 @@ namespace SocialNetwork.Controllers
 
             using (MyDatabaseEntities db = new MyDatabaseEntities())
             {
+                string FirstName = db.Users.Where(f => f.UserID == post.UserID).FirstOrDefault().FirstName;
+                string LastName = db.Users.Where(f => f.UserID == post.UserID).FirstOrDefault().LastName;
+                post.UserIdName = FirstName + " " + LastName;
+
                 db.Posts.Add(post);
                 db.SaveChanges();
             }

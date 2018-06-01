@@ -40,5 +40,6 @@
     <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="DatePosted" Type="DateTime" Precision="3" />
     <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserIdName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
   </EntityType>
 </Schema>

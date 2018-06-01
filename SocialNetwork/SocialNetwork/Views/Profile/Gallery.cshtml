@@ -94,11 +94,11 @@
 
 
     <div class="sidebar-nav">
-
-        <a href="personal-profile.html" title="Profile">
+        @{Session["iduser"] = Model.UserID;}
+        <a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["iduser"]) })" title="Profile">
             <img src="~/Content/img/user.jpg" alt="User name" class="img-circle img-user">
         </a>
-        <h2 class="text-center hidden-xs"><a href="personal-profile.html" title="Profile">@Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</a></h2>
+        <h2 class="text-center hidden-xs"><a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["iduser"]) })" title="Profile">@Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</a></h2>
         <p class="text-center user-description hidden-xs">
             <i>
                 UserID no. @Html.DisplayFor(model => model.UserID).
@@ -109,7 +109,7 @@
 
     <div class="content-posts profile-content">
         <div class="banner-profile">
-            @{Session["iduser"] = Model.UserID;}
+            
         </div>
         <ul class="nav nav-tabs" role="tablist">
             <li>

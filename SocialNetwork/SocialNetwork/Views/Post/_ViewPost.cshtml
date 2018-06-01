@@ -5,12 +5,12 @@
     <div class="card-post">
         <div class="row">
             <div class="col-xs-3 col-sm-2">
-                <a href="personal-profile.html" title="Profile">
+                <a href="@Url.Action("LastPosts", "Profile", new {id = item.UserID })" title="Profile">
                     <img src="~/Content/img/user.jpg" alt="User name" class="img-circle img-user">
                 </a>
             </div>
             <div class="col-xs-9 col-sm-10 info-user">
-                <h3><a href="personal-profile.html" title="Profile">@Html.DisplayNameFor(model => model.UserID) @item.UserID</a></h3>
+                <h3><a href="@Url.Action("LastPosts", "Profile", new {id = item.UserID })" title="Profile">@item.UserIdName</a></h3>
                 <p><i>@item.DatePosted</i></p>
             </div>
         </div>
@@ -19,9 +19,9 @@
                 <p>@item.Description</p>
                 <br>
                 @{if (item.ImagePath != null)
-                  {
-                    <img src="@Url.Content(item.ImagePath)" alt="image post" class="img-post">
-                  }
+                    {
+                        <img src="@Url.Content(item.ImagePath)" alt="image post" class="img-post">
+                    }
                 }
                 <div class="reaction">
                     &#x2764; 0 @item.Likes

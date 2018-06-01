@@ -23,6 +23,7 @@
           </Key>
           <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" />
+          <Property Name="UserIdName" Type="varchar" MaxLength="50" />
           <Property Name="Likes" Type="int" />
           <Property Name="Comments" Type="int" />
           <Property Name="Description" Type="varchar(max)" Nullable="false" />
@@ -90,6 +91,7 @@
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DatePosted" Type="DateTime" Precision="3" />
           <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserIdName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -126,6 +128,7 @@
           <EntitySetMapping Name="Posts">
             <EntityTypeMapping TypeName="MyDatabaseModel.Post">
               <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="UserIdName" ColumnName="UserIdName" />
                 <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

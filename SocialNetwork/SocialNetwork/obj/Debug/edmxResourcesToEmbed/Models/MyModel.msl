@@ -30,6 +30,7 @@
     <EntitySetMapping Name="Posts">
       <EntityTypeMapping TypeName="MyDatabaseModel.Post">
         <MappingFragment StoreEntitySet="Posts">
+          <ScalarProperty Name="UserIdName" ColumnName="UserIdName" />
           <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
           <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
           <ScalarProperty Name="Description" ColumnName="Description" />
