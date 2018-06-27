@@ -4,55 +4,143 @@
     ViewBag.Title = "ViewPost";
 }
 
-<h2>ViewPost</h2>
+<body id="personal">
 
-<div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserID)
-        </dt>
+    <header class="text-right">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "text left search" }))
+        {
+            @Html.TextBox("search")
+            <input type="submit" name="submit" value="Search" />
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.UserID)
-        </dd>
+        <div class="menu-icon">
+            <div class="dropdown">
+                <span class="dropdown-toggle" role="button" id="dropdownSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Likes)
-        </dt>
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            <a href="javascript:document.getElementById('logoutForm').submit()" title="LogOut"> <i class="fa fa-sign-out" aria-hidden="true"> </i> @*s*@ </a>
+                        }
+                    }
 
-        <dd>
-            @Html.DisplayFor(model => model.Likes)
-        </dd>
+                </span>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Comments)
-        </dt>
+            </div>
+        </div>
+        <div class="second-icon dropdown menu-icon">
+            <span>
+                <a href="@Url.Action("Chat","Home")" title="Chat">  <i class="fa fa-weixin" aria-hidden="true"></i></a>
+            </span>
 
-        <dd>
-            @Html.DisplayFor(model => model.Comments)
-        </dd>
+        </div>
+        <div class="second-icon menu-icon">
+            <span>
+                <a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["id"]) })" title="Profile">  <i class="fa fa-user" aria-hidden="true"></i></a>
+            </span>
+        </div>
+        <div class="second-icon menu-icon">
+            <span>
+                <a href="@Url.Action("Index", "Home")" title="Wall">  <i class="fa fa-database" aria-hidden="true"></i></a>
+            </span>
+        </div>
+    </header>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DatePosted)
-        </dt>
+    <div class="sidebar-nav">
+        @{
+            Session["iduser"] = Model.UserID;
+        }
+        @*@{
+                var pic = ViewBag.Pic;
+            }*@
+        <a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["iduser"]) })" title="Profile">
+            <img src="@Url.Content(Model.UserPicture)" alt="User name" class="img-circle img-user">
+        </a>
+        <h2 class="text-center hidden-xs"><a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["iduser"]) })" title="Profile">@Html.DisplayFor(model => model.UserIdName)</a></h2>
+        <p class="text-center user-description hidden-xs">
+            <i>
+                UserID no. @Html.DisplayFor(model => model.UserID).
+                <br />
+            </i>
+        </p>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DatePosted)
-        </dd>
 
-    </dl>
-</div>
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
-    @Html.ActionLink("Back to index", "Index", "Home")
-</p>*@
+
+    <div class="content-posts active" id="posts">
+        <div id="posts-container" class="container-fluid container-posts">
+            <div class="card-post">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-2">
+                        <a href="@Url.Action("LastPosts", "Profile", new { id = Model.UserID })" title="Profile">
+
+                            <img src="@Url.Content(Model.UserPicture)" alt="User name" class="img-circle img-user">
+
+                        </a>
+                    </div>
+                    <div class="col-xs-9 col-sm-10 info-user">
+                        <h3><a href="@Url.Action("LastPosts", "Profile", new { id = Model.UserID })" title="Profile">@Model.UserIdName</a></h3>
+                        <p><i>@Model.DatePosted</i></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 data-post">
+                        <p>@Model.Description</p>
+                        <br>
+                        @{if (Model.ImagePath != null)
+                            {
+                                <img src="@Url.Content(Model.ImagePath)" alt="image post" class="img-post">
+                            }
+                        }
+                        @{if (Model.OtherFilePath != null)
+                            {
+
+                                @Html.ActionLink("Download", "Download", new { location = Model.OtherFilePath })
+                            }
+                        }
+                        <div class="reaction">
+                            @if (ViewBag.Like == false)
+                            {
+                                @Html.ActionLink("Like", "Like", new { postId = Model.PostID })
+
+                            }
+                            else if (ViewBag.Like == true)
+                            {
+                                @Html.ActionLink("DisLike", "Dislike", new { postId = Model.PostID });
+
+                            }
+                            &#x2764;  @Model.Likes
+                        </div>
+
+                        <div class="comments">
+
+                            @{Session["postID"] = Model.PostID;}
+
+                            @Html.Action("_Comment", "Post", new { postId = Model.PostID })
+
+                            @Html.Action("Comment", "Post")
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            </div>
+        </div>
+            <div id="settingsmodal" class="modal fade text-center">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    </div>
+                </div>
+            </div>
+
+
+</body>
+
+

@@ -1,0 +1,104 @@
+﻿@model SocialNetwork.Models.Post
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body id="wall">
+
+    <header class="text-right">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "text left search" }))
+        {
+            @Html.TextBox("search")
+            <input type="submit" name="submit" value="Search" />
+        }
+
+        <div class="menu-icon">
+            <div class="dropdown">
+                <span class="dropdown-toggle" role="button" id="dropdownSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            <a href="javascript:document.getElementById('logoutForm').submit()" title="LogOut"> <i class="fa fa-sign-out" aria-hidden="true"> </i> @*s*@ </a>
+                        }
+                    }
+
+                </span>
+
+            </div>
+        </div>
+        <div class="second-icon dropdown menu-icon">
+            <span>
+                <a href="@Url.Action("Chat","Home")" title="Chat">  <i class="fa fa-weixin" aria-hidden="true"></i></a>
+            </span>
+
+        </div>
+        <div class="second-icon menu-icon">
+            <span>
+                <a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["id"]) })" title="Profile">  <i class="fa fa-user" aria-hidden="true"></i></a>
+            </span>
+        </div>
+        <div class="second-icon menu-icon">
+            <span>
+                <a href="@Url.Action("Index", "Home")" title="Wall">  <i class="fa fa-database" aria-hidden="true"></i></a>
+            </span>
+        </div>
+    </header>
+
+
+
+    <div class="sidebar-nav">
+        @{
+            var data = ViewBag.Name;
+            var pic = ViewBag.Pic;
+        }
+        <a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["id"]) })" title="Profile">
+            <img src="@Url.Content(pic.ProfileImage)" alt="User name" class="img-circle img-user">
+        </a>
+        <h2 class="text-center hidden-xs"><a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["id"]) })" title="Profile">@data.FirstName  @data.LastName</a></h2>
+        <p class="text-center user-description hidden-xs">
+            <i>
+                Welcome @HttpContext.Current.User.Identity.Name.
+                <br />
+                UserID no. @Session["id"].
+                <br />
+            </i>
+        </p>
+    </div>
+
+
+    @*Welcome @HttpContext.Current.User.Identity.Name.*@
+
+    <div class="content-posts active" id="posts">
+        <div id="posts-container" class="container-fluid container-posts">
+
+
+            <div class="card-post">
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 data-post">
+                        <p>@Html.DisplayFor(model => model.Description)</p>
+                        <br>
+                        @{if (Html.DisplayFor(model => model.ImagePath) != null)
+                            {
+                                <img src="@Url.Content(Model.ImagePath)" alt="image post" class="img-post">
+                            }
+                        }
+                        @{
+                            Session["img"] = Model.ImagePath.ToString();
+                        }
+                        <div class="form-group">
+                            <center><input type="submit" value="Set as profile picture" class="btn btn-default" /></center>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+    </body>

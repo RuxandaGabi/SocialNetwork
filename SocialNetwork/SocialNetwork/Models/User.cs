@@ -20,6 +20,5 @@ namespace SocialNetwork.Models
         public string EmailID { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Password { get; set; }
-        public string ProfileImage { get; set; }
     }
 }

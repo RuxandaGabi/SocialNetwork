@@ -5,12 +5,31 @@
 @foreach (var item in Model)
 {
 
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <a class="lightbox" href="@Url.Content(item.ImagePath)">
-                <img src="@Url.Content(item.ImagePath)" new class="img-post" />
-            </a>
-        </div>
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+        <a class="lightbox" href="@Url.Content(item.ImagePath)">
+            <img src="@Url.Content(item.ImagePath)" new class="img-post" />
+        </a>
+        @*@Html.Action("_ProfilePicture", "Profile", new { image = item.ImagePath });*@
+        @*@Url.Action("Picture", "Profile", new { id = Convert.ToInt32(item.PostID) })*@
+        @{
+            using (Html.BeginForm("_Gallery", "Profile", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                Session["img"] = item.ImagePath.ToString();
+
+                if (Convert.ToInt32(Session["id"]) == Convert.ToInt32(Session["iduser"]))
+                {
+                    <div class="form-group">
+                        <center><input type="submit" value="Set as profile picture" class="btn btn-default" /></center>
+                    </div>
+                }
+
+            }
+        }
     </div>
+
+</div>
 
 }

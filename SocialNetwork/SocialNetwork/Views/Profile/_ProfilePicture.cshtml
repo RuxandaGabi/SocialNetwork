@@ -1,0 +1,14 @@
+﻿@model SocialNetwork.Models.Post
+
+
+@{
+    using (Html.BeginForm("_ProfilePicture", "Profile", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        //Session["img"] = item.ImagePath.ToString();
+        <div class="form-group">
+            <center><input type="submit" value="Set as profile picture" class="btn btn-default" /></center>
+        </div>
+    }
+}

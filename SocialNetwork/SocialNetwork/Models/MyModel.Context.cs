@@ -28,5 +28,9 @@ namespace SocialNetwork.Models
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Picture> Pictures { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<UserData> UserDatas { get; set; }
+        public virtual DbSet<Friend> Friends { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Like> Likes { get; set; }
     }
 }

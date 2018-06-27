@@ -1,0 +1,96 @@
+﻿@model IEnumerable<SocialNetwork.Models.User>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+
+<body id="wall">
+
+    <header class="text-right">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "text left search" }))
+        {
+            @Html.TextBox("search")
+            <input type="submit" name="submit" value="Search" />
+        }
+
+        <div class="menu-icon">
+            <div class="dropdown">
+                <span class="dropdown-toggle" role="button" id="dropdownSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            <a href="javascript:document.getElementById('logoutForm').submit()" title="LogOut"> <i class="fa fa-sign-out" aria-hidden="true"> </i> @*s*@ </a>
+                        }
+                    }
+
+                </span>
+
+            </div>
+        </div>
+        <div class="second-icon dropdown menu-icon">
+            <span>
+                <a href="@Url.Action("Chat","Home")" title="Chat">  <i class="fa fa-weixin" aria-hidden="true"></i></a>
+            </span>
+
+        </div>
+        <div class="second-icon menu-icon">
+            <span>
+                <a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["id"]) })" title="Profile">  <i class="fa fa-user" aria-hidden="true"></i></a>
+            </span>
+        </div>
+        <div class="second-icon menu-icon">
+            <span>
+                <a href="@Url.Action("Index", "Home")" title="Wall">  <i class="fa fa-database" aria-hidden="true"></i></a>
+            </span>
+        </div>
+    </header>
+
+    <div class="sidebar-nav">
+        @{
+            var data = ViewBag.Name;
+            var pic = ViewBag.Pic;
+        }
+        <a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["id"]) })" title="Profile">
+            <img src="@Url.Content(pic.ProfileImage)" alt="User name" class="img-circle img-user">
+        </a>
+        <h2 class="text-center hidden-xs"><a href="@Url.Action("LastPosts", "Profile", new {id = Convert.ToInt32(Session["id"]) })" title="Profile">@data.FirstName  @data.LastName</a></h2>
+    </div>
+
+    <div class="content-posts active" id="posts">
+        <div id="posts-container" class="container-fluid container-posts">
+
+
+                @foreach (var item in Model)
+                {
+
+                    <div class="card-post">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-2">
+                                <a href="@Url.Action("LastPosts", "Profile", new { id = item.UserID })" title="Profile">
+                                  
+                                            
+                                    <img src="~/Image/facebook-avatar184953217.jpg" alt="User name" class="img-circle img-user">
+                                </a>
+                            </div>
+                            <div class="col-xs-9 col-sm-10 info-user">
+                                <h3><a href="@Url.Action("LastPosts", "Profile", new { id = item.UserID })" title="Profile">@item.FirstName @item.LastName</a></h3>
+                                <br />
+                                Descriere personala
+                                
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+        </div>
+    </div>
+
+</body>
+
+
+

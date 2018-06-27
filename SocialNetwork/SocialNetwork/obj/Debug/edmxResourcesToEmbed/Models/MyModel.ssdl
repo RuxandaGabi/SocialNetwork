@@ -1,5 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MyDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Comment" Type="varchar(max)" />
+    <Property Name="DatePosted" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Friend">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId1" Type="int" />
+    <Property Name="UserId2" Type="int" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="Likes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostId" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
   <EntityType Name="Pictures">
     <Key>
       <PropertyRef Name="PictureID" />
@@ -19,11 +46,24 @@
     <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="int" />
     <Property Name="UserIdName" Type="varchar" MaxLength="50" />
+    <Property Name="UserPicture" Type="varchar(max)" />
     <Property Name="Likes" Type="int" />
     <Property Name="Comments" Type="int" />
     <Property Name="Description" Type="varchar(max)" Nullable="false" />
     <Property Name="ImagePath" Type="varchar(max)" />
+    <Property Name="OtherFilePath" Type="varchar(max)" />
     <Property Name="DatePosted" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ProfileImage" Type="varchar(max)" />
+    <Property Name="Hobbies" Type="varchar(max)" />
+    <Property Name="Studies" Type="varchar(max)" />
+    <Property Name="Job" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -35,11 +75,14 @@
     <Property Name="EmailID" Type="varchar" MaxLength="254" Nullable="false" />
     <Property Name="DateOfBirth" Type="datetime" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ProfileImage" Type="varchar(max)" />
   </EntityType>
   <EntityContainer Name="MyDatabaseModelStoreContainer">
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Friend" EntityType="Self.Friend" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Likes" EntityType="Self.Likes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pictures" EntityType="Self.Pictures" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserData" EntityType="Self.UserData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

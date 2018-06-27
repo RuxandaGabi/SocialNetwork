@@ -1,0 +1,34 @@
+Curs 1  sub 1-4
+Curs 2  sub 5-7
+Curs 3  sub 8
+Curs 4  sub 9-11
+Curs 5  sub 12-14
+Curs 6  sub 15-17
+Curs 7  sub 18-24
+Curs 8  sub 25-29
+Curs 9  sub 30-35
+Curs 10 sub 36-44
+Curs 11 sub 45-53
+
+
+
+1. 	  19 Adresarea directa // 53 Instr RET
+2.	  25 Concepte fundamentale asupra arhitecturii.Nivelele unui sistem de calcul // 48 Instr PUSH
+3.	  ?? Calculatorul elementar didactic (15,16,17 ?) // 35 Flyn - MISD / MIMD 
+4.	  22 Adresarea indirecta // 37 Formate de instructiuni la nivel cod masina
+5.	  3  Cod complementar // 40 Metabitul && Instr ortigonale si arh etichetate
+6.	  28 Structura sistemelor de calcul moderne multinivel // 39 Formate de instrucţiuni cu lungime fixă si variabilă
+7.	  7  Analiza intre FXP si FLP // 45 stiva & stiva hardware
+8. 	  21 Adresarea bazată // 51 stiva in apelul de proceduri
+9. 	  14 Organizarea avansata a comunicarii CPU // 27 Arhitecturi si limbaje
+10.   12 Structura generala a unui cpu // 34 Flynn - SISD /SIMD
+11.   13 Tehnici de echilibrare a vitezei de funcţionare CPU-memorie principală // 47 Evaluarea expresiilor folosind stiva (notaţia poloneză, evaluarea expresiilor, exemple). 
+12.   2	 Codul direct // 30 Magistrala de sistem
+13.   18 Generalităţi privind adresarea memoriei // 52 Instructiunea CALL la I8080
+14.   10 Str de baza Von newmann // ?? Clase de instructiuni la nivel cod masina (41-44 ?)
+15.   29 Compilare si interpretare // 38  Criterii de proiectare a formatelor de instrucţiuni
+16.   8  Alfanumeric // 49 Instr POP
+17.   50 Instr LXI // 9 Calculatorul cu principiile 
+18.   20 adresare paginata // ?? call/ret ???
+
+

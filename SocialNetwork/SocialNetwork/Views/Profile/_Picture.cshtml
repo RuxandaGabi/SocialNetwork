@@ -1,0 +1,22 @@
+﻿@model SocialNetwork.Models.Post
+
+<div class="card-post">
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 data-post">
+            <p>@Html.DisplayFor(model => model.Description)</p>
+            <br>
+            @{if (Html.DisplayFor(model => model.ImagePath) != null)
+                {
+                    <img src="@Url.Content(Model.ImagePath)" alt="image post" class="img-post">
+                }
+            }
+            @Session["img"] = @Model.ImagePath.ToString();
+            <div class="form-group">
+                <center><input type="submit" value="Set as profile picture" class="btn btn-default" /></center>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model SocialNetwork.Models.Friend
+
+
+    @using (Html.BeginForm("_AddFriend", "Friend", FormMethod.Post, new { id = "target-form", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <center>
+            <div>
+                You are not friend with this person yet
+
+                <input type="submit" value="Send friend request" class="btn btn-default" />
+            </div>
+        </center>
+
+    }
+
+
+
+

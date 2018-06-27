@@ -179,7 +179,7 @@ header .badge {
 }
 
 .search input {
-    width: 200px;
+    /*width: 200px;*/
     border-radius: 10px;
     border: 0px;
     color: #404040;
@@ -492,7 +492,7 @@ footer.login-footer {
   header .search, header .search input, header .dropdown { width:100%; }
 
   header .search input  { border-radius:0px;
-                          height: 40px;}
+                          height: 30px;}
 
   header .dropdown-menu { top:36px; }
 
@@ -510,7 +510,7 @@ footer.login-footer {
                                     margin:0px;}
 
   header .menu-icon { margin:0px;
-                      margin-top:25px;
+                      margin-top:18px;
                       width:25%;
                       text-align: center;}
 

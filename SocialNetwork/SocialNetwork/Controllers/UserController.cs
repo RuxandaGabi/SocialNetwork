@@ -22,7 +22,7 @@ namespace SocialNetwork.Controllers
         //Register POST action
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration(User user)
+        public ActionResult Registration(User user, UserData userD)
         {
             bool Status = false;
             string message = "";
@@ -50,7 +50,10 @@ namespace SocialNetwork.Controllers
                 {
                     dc.Users.Add(user);
                     dc.SaveChanges();
-
+                    userD.Id = user.UserID;
+                    userD.ProfileImage = "~/Image/facebook-avatar184953217.jpg";
+                    dc.UserDatas.Add(userD);
+                    dc.SaveChanges();
                     //send verification email
 
                     message = "Registration successfully done!";

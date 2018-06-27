@@ -5,8 +5,10 @@
     <div class="card-post">
         <div class="row">
             <div class="col-xs-3 col-sm-2">
-                <a href="@Url.Action("LastPosts", "Profile", new {id = item.UserID })" title="Profile">
-                    <img src="~/Content/img/user.jpg" alt="User name" class="img-circle img-user">
+                <a href="@Url.Action("LastPosts", "Profile", new { id = item.UserID })" title="Profile">
+
+                    <img src="@Url.Content(item.UserPicture)" alt="User name" class="img-circle img-user">
+                    
                 </a>
             </div>
             <div class="col-xs-9 col-sm-10 info-user">
@@ -17,21 +19,61 @@
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 data-post">
                 <p>@item.Description</p>
-                <br>
+
                 @{if (item.ImagePath != null)
                     {
+                       
                         <img src="@Url.Content(item.ImagePath)" alt="image post" class="img-post">
                     }
                 }
-                <div class="reaction">
-                    &#x2764; 0 @item.Likes
-                </div>
-                <div class="comments">
-                    @item.Comments 0 Comments
-                    <form>
-                        <input type="text" class="form-control" placeholder="Add a comment">
-                    </form>
-                </div>
+
+
+                @{if (item.OtherFilePath != null)
+                    {
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                        @Html.ActionLink("Download", "Download", new { location = item.OtherFilePath })
+                    }
+                }
+
+                <hr />
+                
+                @{
+                    if (item.Likes != null && item.Likes != 0)
+                    {
+
+                       
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>  @item.Likes
+                       
+                    }
+                }
+
+                @{
+                    if (item.Comments == 1)
+                    {
+                        <div class="comments">
+                            <p> @item.Comments  Comment </p>
+                        </div>
+                    }
+                    else if (item.Comments > 1)
+                    {
+                        <div class="comments">
+                            <p> @item.Comments  Comments </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <p>No comments yet.</p>
+                    }
+                }
+
+                <h3>
+                    <i class="fa fa-comment-o" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "ViewPost", new { id = item.PostID })
+
+                </h3>
+
+
+
             </div>
         </div>
     </div>

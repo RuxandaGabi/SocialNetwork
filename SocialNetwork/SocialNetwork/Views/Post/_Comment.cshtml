@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SocialNetwork.Models.Comment>
+
+@foreach (var item in Model)
+{
+        <ul>
+            <li><b>@item.UserId</b>@item.Comment1</li>
+        </ul>
+}
+
+
+

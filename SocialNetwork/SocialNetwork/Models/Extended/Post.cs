@@ -10,6 +10,7 @@ namespace SocialNetwork.Models
     public partial class Post
     {
         public HttpPostedFileBase ImageFile { get; set; }
+        public HttpPostedFileBase OtherFile { get; set; }
     }
 
     public class PostMetadata
@@ -24,10 +25,15 @@ namespace SocialNetwork.Models
 
         [Display(Name = "Upload image")]
         public string ImagePath { get; set; }
+        [Display(Name = "Upload a file")]
+        public string OtherFilePath { get; set; }
 
         public Nullable<System.DateTime> DatePosted { get; set; }
 
         public HttpPostedFileBase ImageFile { get; set; }
+        public HttpPostedFileBase OtherFile { get; set; }
+
+        public string UserPicture { get; set; }
 
 
     }

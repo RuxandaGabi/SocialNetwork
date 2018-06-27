@@ -42,6 +42,11 @@ namespace SocialNetwork.Models
         [Compare("Password",ErrorMessage ="Passwords do not match")]
         public string ConfirmPassword { get; set; }
 
-        public string ProfileImage { get; set; }
+        //public string ProfileImage { get; set; }
+
+        //public string Hobbies { get; set; }
+        //public string Studies { get; set; }
+        //public string Job { get; set; }
+        //public string Description { get; set; }
     }
 }

@@ -1,0 +1,55 @@
+﻿@model SocialNetwork.Models.Friend
+
+Sesiuni : @Session["id"],  @Session["iduser"]
+Status : @ViewBag.Status
+ViewBag:
+@ViewBag.Friend.UserId1
+@ViewBag.Friend.UserId2
+
+@{
+    var frnd = ViewBag.Friend;
+    var iduser = Convert.ToInt32(Session["iduser"]);
+    var id = Convert.ToInt32(Session["id"]);
+
+    if (ViewBag.Status == 1)
+    {
+
+        if (ViewBag.Friend.UserId1 == iduser)
+        {
+            using (Html.BeginForm("_CheckFriend", "Friend", FormMethod.Post, new { id = "target-form", enctype = "multipart/form-data" }))
+            {
+                            @Html.AntiForgeryToken()
+
+
+                            <center>
+            
+
+
+                                <div>
+                                    Accept friend request?
+
+                        <input type="submit" value="Accept" class="btn btn-default" />
+                    </div>
+                </center>
+
+            }
+    }
+        else if (ViewBag.Friend.UserId2 == iduser)
+        {
+            <center>
+                <div>
+                    Awaiting for aprooval
+
+                    @*<input type="submit" value="Accept" class="btn btn-default" />*@
+                </div>
+            </center>
+        }
+
+
+
+    }
+    else if (ViewBag.Status == 2)
+    {
+
+    }
+}
