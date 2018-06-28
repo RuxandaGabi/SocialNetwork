@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SocialNetwork.Models.Friend>
+
+@foreach (var item in Model)
+{
+    if (item.Status == 2)
+    {
+    <div class="card-post">
+        <div class="row">
+
+            <div class="col-xs-9 col-sm-10 info-user">
+  
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 data-post">
+
+                @{
+
+                    if (item.UserId1 != Convert.ToInt32(Session["iduser"]))
+                    {
+
+                        <h3><a href="@Url.Action("LastPosts", "Profile", new { id = item.UserId1 })" title="Profile">@item.User1Name</a></h3>
+                    }
+                    else
+                    {
+                        <h3><a href="@Url.Action("LastPosts", "Profile", new { id = item.UserId2 })" title="Profile">@item.User2Name</a></h3>
+
+                    }
+                  }
+                    
+
+
+
+                <hr />
+
+
+            </div>
+        </div>
+    </div>
+    }
+}

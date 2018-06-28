@@ -40,6 +40,20 @@ namespace SocialNetwork
             );
 
             routes.MapRoute(
+                name: "Uploads",
+                url: "User/{id}/Uploads",
+                defaults: new { controller = "Profile", action = "Uploads", id = UrlParameter.Optional },
+                constraints: new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
+                name: "Friends",
+                url: "User/{id}/Friends",
+                defaults: new { controller = "Profile", action = "Friends", id = UrlParameter.Optional },
+                constraints: new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
                 name: "Pictures",
                 url: "User/{id}/Gallery",
                 defaults: new { controller = "Profile", action = "Gallery", id = UrlParameter.Optional },

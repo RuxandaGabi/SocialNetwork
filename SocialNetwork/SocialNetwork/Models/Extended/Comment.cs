@@ -19,5 +19,6 @@ namespace SocialNetwork.Models.Extended
         public Nullable<int> UserId { get; set; }
         public string Comment1 { get; set; }
         public Nullable<System.DateTime> DatePosted { get; set; }
+        public string PosterName { get; set; }
     }
 }

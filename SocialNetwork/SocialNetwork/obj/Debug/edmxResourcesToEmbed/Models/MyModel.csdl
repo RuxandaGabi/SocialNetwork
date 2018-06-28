@@ -66,6 +66,8 @@
     <Property Name="UserId1" Type="Int32" />
     <Property Name="UserId2" Type="Int32" />
     <Property Name="Status" Type="Int32" />
+    <Property Name="User1Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="User2Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
@@ -76,6 +78,7 @@
     <Property Name="UserId" Type="Int32" />
     <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="DatePosted" Type="DateTime" Precision="3" />
+    <Property Name="PosterName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Like">
     <Key>

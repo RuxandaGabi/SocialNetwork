@@ -18,33 +18,20 @@ namespace SocialNetwork.Controllers
             var idx = Convert.ToInt32(Session["id"]);
             
             var iduser = Convert.ToInt32(Session["iduser"]);
-            //Friend friend = new Friend();
+            bool exist;
+            
 
             using (MyDatabaseEntities db = new MyDatabaseEntities())
             {
                 UserData usrD = new UserData()
                 {
-                    ProfileImage = db.UserDatas.Where(x => x.Id == idx).FirstOrDefault().ProfileImage
+                    ProfileImage = db.UserDatas.Where(x => x.Id == id).FirstOrDefault().ProfileImage
                 };
 
-                bool exist = db.Friends.Any(x => x.UserId1 == idx && x.UserId2 == iduser || x.UserId1 == iduser && x.UserId2 == idx);
+                exist = db.Friends.Any(x => x.UserId1 == idx && x.UserId2 == iduser || x.UserId1 == iduser && x.UserId2 == idx);
                 if (exist == true)
                 {
-                    //Friend friend = new Friend()
-                    //{
-                    //    UserId1 = db.Friends.Where(x => x.UserId1 == idx && x.UserId2 == iduser || x.UserId1 == iduser && x.UserId2 == idx).FirstOrDefault().UserId1,
-                    //    UserId2 = db.Friends.Where(x => x.UserId1 == idx && x.UserId2 == iduser || x.UserId1 == iduser && x.UserId2 == idx).FirstOrDefault().UserId1
-
-                    //};
-                    //ViewBag.Friend = friend;
-
-
                     ViewBag.Status = db.Friends.Where(x => x.UserId1 == idx && x.UserId2 == iduser || x.UserId1 == iduser && x.UserId2 == idx).FirstOrDefault().Status;
-                    //friend = db.Friends.Where(x => x.UserId1 == idx && x.UserId2 == iduser || x.UserId1 == iduser && x.UserId2 == idx).FirstOrDefault();
-
-                    //ViewBag.User1 = db.Friends.Where(x => x.UserId1 == idx && x.UserId2 == iduser || x.UserId1 == iduser && x.UserId2 == idx).FirstOrDefault().UserId1;
-                    //ViewBag.User2 = db.Friends.Where(x => x.UserId1 == idx && x.UserId2 == iduser || x.UserId1 == iduser && x.UserId2 == idx).FirstOrDefault().UserId2;
-
                 }
                 else
                 {
@@ -79,6 +66,71 @@ namespace SocialNetwork.Controllers
 
             return View(user);
         }
+
+        [HttpGet]
+        public ActionResult Friends(int id)
+        {
+            User user = new User();
+           
+            using (MyDatabaseEntities db = new MyDatabaseEntities())
+            {
+                UserData usrD = new UserData()
+                {
+                    ProfileImage = db.UserDatas.Where(x => x.Id == id).FirstOrDefault().ProfileImage
+                };
+                user = db.Users.Where(x => x.UserID == id).FirstOrDefault();
+                ViewBag.Pic = usrD;
+
+            }
+            return View(user);
+        }
+
+        [HttpGet]
+        public ActionResult _Friends(int id)
+        {
+            bool exist;
+
+            id = Convert.ToInt32(Session["iduser"]);
+            using (MyDatabaseEntities db = new MyDatabaseEntities())
+            {
+                exist = db.Friends.Any(x => x.UserId1 == id || x.UserId2 == id);
+                if (exist == true)
+                {
+                    return View(db.Friends.Where(x => x.UserId1 == id && x.UserId2 != id || x.UserId1 != id && x.UserId2 == id).ToList());
+                }
+                
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Uploads(int id)
+        {
+            User user = new User();
+
+            using (MyDatabaseEntities db = new MyDatabaseEntities())
+            {
+                UserData usrD = new UserData()
+                {
+                    ProfileImage = db.UserDatas.Where(x => x.Id == id).FirstOrDefault().ProfileImage
+                };
+                user = db.Users.Where(x => x.UserID == id).FirstOrDefault();
+                ViewBag.Pic = usrD;
+            }
+
+            return View(user);
+        }
+
+        [HttpGet]
+        public ActionResult _Uploads(int id)
+        {
+            id = Convert.ToInt32(Session["iduser"]);
+            using (MyDatabaseEntities db = new MyDatabaseEntities())
+            {
+                return View(db.Posts.Where(x => x.UserID == id && x.OtherFilePath != null).ToList().OrderByDescending(c => c.DatePosted));
+            }
+        }
+
 
         [HttpGet]
         public ActionResult Gallery(int id)
@@ -144,6 +196,16 @@ namespace SocialNetwork.Controllers
                     var user = db.UserDatas.Where(x => x.Id == id).FirstOrDefault();
                     
                     user.ProfileImage = image;
+                    foreach(var item in db.Posts)
+                    {
+                        if(item.UserID == id)
+                        {
+                            item.UserPicture = image;
+                            db.Entry(item).Property("UserPicture").IsModified = true;
+                            //db.SaveChanges();
+                        }
+                    }
+
                     db.Entry(user).Property("ProfileImage").IsModified = true;
                     
                     

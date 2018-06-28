@@ -100,7 +100,8 @@
                         <li class="active">@Html.ActionLink("Last Posts", "LastPosts", "Profile", null, new { id = Session["iduser"] })</li>
                         <li>@Html.ActionLink("Info", "Bio", "Profile", null, new { id = Session["iduser"] })</li>
                         <li>@Html.ActionLink("Pictures", "Gallery", "Profile", null, new { id = Session["iduser"] })</li>
-                        <li><a href="#uploads" role="tab" id="chatTab" data-toggle="tab" aria-controls="uploads" aria-expanded="true">Uploads</a></li>
+                        <li>@Html.ActionLink("Uploads", "Uploads", "Profile", null, new { id = Session["iduser"] })</li>
+                        <li>@Html.ActionLink("Friends", "Friends", "Profile", null, new { id = Session["iduser"] })</li>
 
                     </ul>
 
@@ -121,15 +122,16 @@
             {
 
 
-                <ul class="nav nav-tabs" role="tablist">
+                    <ul class="nav nav-tabs" role="tablist">
 
 
-                    <li class="active">@Html.ActionLink("Last Posts", "LastPosts", "Profile", null, new { id = Session["iduser"] })</li>
-                    <li>@Html.ActionLink("Info", "Bio", "Profile", null, new { id = Session["iduser"] })</li>
-                    <li>@Html.ActionLink("Pictures", "Gallery", "Profile", null, new { id = Session["iduser"] })</li>
-                    <li><a href="#uploads" role="tab" id="chatTab" data-toggle="tab" aria-controls="uploads" aria-expanded="true">Uploads</a></li>
+                        <li class="active">@Html.ActionLink("Last Posts", "LastPosts", "Profile", null, new { id = Session["iduser"] })</li>
+                        <li>@Html.ActionLink("Info", "Bio", "Profile", null, new { id = Session["iduser"] })</li>
+                        <li>@Html.ActionLink("Pictures", "Gallery", "Profile", null, new { id = Session["iduser"] })</li>
+                        <li>@Html.ActionLink("Uploads", "Uploads", "Profile", null, new { id = Session["iduser"] })</li>
+                        <li>@Html.ActionLink("Friends", "Friends", "Profile", null, new { id = Session["iduser"] })</li>
 
-                </ul>
+                    </ul>
 
                 <div class="tab-content">
                     <!-- Tab Posts -->

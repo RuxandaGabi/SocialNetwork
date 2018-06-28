@@ -18,5 +18,7 @@ namespace SocialNetwork.Models.Extended
         public Nullable<int> UserId1 { get; set; }
         public Nullable<int> UserId2 { get; set; }
         public Nullable<int> Status { get; set; }
+        public string User1Name { get; set; }
+        public string User2Name { get; set; }
     }
 }

@@ -312,6 +312,10 @@
     <Content Include="Views\Post\Comment.cshtml" />
     <Content Include="Views\Post\Comments.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Profile\Uploads.cshtml" />
+    <Content Include="Views\Profile\_Uploads.cshtml" />
+    <Content Include="Views\Profile\_Friends.cshtml" />
+    <Content Include="Views\Profile\Friends.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

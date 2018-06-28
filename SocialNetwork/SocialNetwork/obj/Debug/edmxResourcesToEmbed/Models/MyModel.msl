@@ -57,6 +57,8 @@
     <EntitySetMapping Name="Friends">
       <EntityTypeMapping TypeName="MyDatabaseModel.Friend">
         <MappingFragment StoreEntitySet="Friend">
+          <ScalarProperty Name="User2Name" ColumnName="User2Name" />
+          <ScalarProperty Name="User1Name" ColumnName="User1Name" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="UserId2" ColumnName="UserId2" />
           <ScalarProperty Name="UserId1" ColumnName="UserId1" />
@@ -67,6 +69,7 @@
     <EntitySetMapping Name="Comments">
       <EntityTypeMapping TypeName="MyDatabaseModel.Comment">
         <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="PosterName" ColumnName="PosterName" />
           <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
           <ScalarProperty Name="Comment1" ColumnName="Comment" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />

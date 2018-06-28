@@ -104,27 +104,6 @@ namespace SocialNetwork.Controllers
         }
 
 
-
-
-        //[HttpGet]
-        //public ActionResult _ViewProfile()
-        //{
-        //    int id = Convert.ToInt32(Session["idUser"]);
-
-        //    using (MyDatabaseEntities db = new MyDatabaseEntities())
-        //    {
-        //        UserData userDat = new UserData
-        //        {
-
-        //            ProfileImage = db.Users.Where(f => f.UserID == id).FirstOrDefault().ProfileImage,
-
-        //        };
-        //        ViewBag.userData = userDat;
-        //    }
-        //    return View();
-        //}
-
-
         [HttpGet]
         public ActionResult ViewPost(int id)
         {
@@ -262,13 +241,17 @@ namespace SocialNetwork.Controllers
             var UsrID = Convert.ToInt32(Session["id"]);
             var pID = Convert.ToInt32(Session["postID"]);
 
+
             using (MyDatabaseEntities db = new MyDatabaseEntities())
             {
+                var fname = db.Users.Where(x => x.UserID == UsrID).FirstOrDefault().FirstName;
+                var lname = db.Users.Where(x => x.UserID == UsrID).FirstOrDefault().LastName;
+
 
                 comment.UserId = UsrID;
                 comment.PostId = pID;
                 comment.DatePosted = DateTime.Now;
-
+                comment.PosterName = fname + " " + lname;
 
                 db.Comments.Add(comment);
                 db.SaveChanges();

@@ -35,8 +35,8 @@ C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Webpages.Deployment.xml
 C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Webpages.Razor.xml
 C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Helpers.xml
 C:\Licenta\SocialNetwork\SocialNetwork\bin\System.Web.Mvc.xml
-C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csprojAssemblyReference.cache
 C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csproj.CoreCompileInputs.cache
 C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csproj.CopyComplete
 C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.dll
 C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.pdb
+C:\Licenta\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csprojAssemblyReference.cache

@@ -28,11 +28,18 @@ namespace SocialNetwork.Controllers
             {
                 using (MyDatabaseEntities db = new MyDatabaseEntities())
                 {
+                    var fname1 = db.Users.Where(x => x.UserID == id).FirstOrDefault().FirstName;
+                    var lname1 = db.Users.Where(x => x.UserID == id).FirstOrDefault().LastName;
+                    var fname2 = db.Users.Where(x => x.UserID == iduser).FirstOrDefault().FirstName;
+                    var lname2 = db.Users.Where(x => x.UserID == iduser).FirstOrDefault().LastName;
+
 
                     Friend beFriend = new Friend
                     {
                         UserId1 = id,
                         UserId2 = iduser,
+                        User1Name = fname1 + " " + lname1,
+                        User2Name = fname2 + " " + lname2,
                         Status = 1
                     };
                     //ViewBag.Status =  1;
